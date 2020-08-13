@@ -20,17 +20,17 @@ var lut = {
   "A": "\u00c2", 
   "e": "\u00ea", 
   "E": "\u00ca", 
-  "i": "\u00ec", 
+  "i": "\u00ee", 
   "I": "\u00ce", 
-  "o": "\u00f2", 
+  "o": "\u00f4", 
   "O": "\u00d4", 
-  "u": "\u00fa", 
+  "u": "\u00fb", 
   "U": "\u00db", 
   "w": "\u0175", 
   "W": "\u0174", 
   "y": "\u0177", 
   "Y": "\u0176", 
-  "`": "\u2018"
+  /*"`": "\u2018"*/
 };
 
 chrome.input.ime.onFocus.addListener(function(context) {
@@ -58,7 +58,7 @@ chrome.input.ime.onKeyEvent.addListener(
         }
       }
       
-      if (!handled && keyData.type == "keydown" && keyData.code == "AltRight" && keyData.key =="") {
+      if (!handled && keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
         previousCharIsMagic = true;
         handled = true;
       }
