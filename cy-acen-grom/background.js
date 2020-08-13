@@ -53,10 +53,10 @@ chrome.input.ime.onKeyEvent.addListener(
                                    "text": lut[keyData.key]});
           handled = true;
         } 
-        else {
-          chrome.input.ime.commitText({"contextID": contextID,
-                                   "text": "`"});
-        }
+       // else {
+       //   chrome.input.ime.commitText({"contextID": contextID,
+       //                           "text": "`"});
+       //}
       }
       
       if (!handled && keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
