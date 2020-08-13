@@ -52,7 +52,8 @@ chrome.input.ime.onKeyEvent.addListener(
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": lut[keyData.key]});
           handled = true;
-        } else {
+        } 
+        else {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": "`"});
         }
