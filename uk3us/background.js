@@ -1,4 +1,4 @@
-// Examples The following code creates an IME that converts typed letters to upper case.
+// An IME that converts typed Welsh vowels to upper case.
 var context_id = -1;
 
 chrome.input.ime.onFocus.addListener(function(context) {
