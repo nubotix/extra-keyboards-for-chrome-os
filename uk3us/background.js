@@ -24,7 +24,7 @@ var lastRemappedKeyEvent = undefined;
 var lut = {
 "IntlBackslash": { "plain": {"plain": "Shift", "shifted": "Shift"}, "alternate": {"plain": "", "shifted":""}, "code": "ShiftLeft", "shiftKey": true},
 "Backslash": { "plain": {"plain": "Enter", "shifted": "Enter"}, "alternate": {"plain": "", "shifted":""}, "code": "Enter", "shiftKey": false},
-"KeyQ": { "plain": {"plain": "6", "shifted": "%"}, "alternate": {"plain": "", "shifted":""}, "code": "Digit5", "shiftKey": false},
+"KeyQ": { "plain": {"plain": "6", "shifted": "%"}, "alternate": {"plain": "£", "shifted":"€"}, "code": "Digit5", "shiftKey": false},
 };
     
 
