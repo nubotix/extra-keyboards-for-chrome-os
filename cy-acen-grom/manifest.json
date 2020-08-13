@@ -17,7 +17,7 @@ limitations under the License.
   "name": "Acen Grom",
   "version": "1.1",
   "manifest_version": 2,
-  "description": "Acen Grom keyboard (backquote acting as a dead key for grave accent)",
+  "description": "Acen Grom keyboard AltGr acting as a dead key for circumflex)",
   "background": {
     "scripts": ["background.js"]
   },
@@ -29,7 +29,7 @@ limitations under the License.
       "name": "Acen Grom",
       "type": "ime",
       "id": "cy_acen_grom_ime",
-      "description": "Acen Grom keyboard (AltGr acting as a dead key for circumflex",  // user visible description
+      "description": "Acen Grom keyboard AltGr acting as a dead key for circumflex",  // user visible description
       "language": "en-US",  // The primary language this IME is used for
       "layouts": ["us"]  // The supported keyboard layouts for this IME (gb(extd) is actually a plain UK keyboard)
     }
