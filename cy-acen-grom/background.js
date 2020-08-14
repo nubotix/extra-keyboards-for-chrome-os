@@ -48,7 +48,7 @@ chrome.input.ime.onKeyEvent.addListener(
       
       if (previousCharIsMagic && keyData.type == "keydown" && !isPureModifier(keyData)) {
         previousCharIsMagic = false;
-        if (circumflexec[keyData.key]) {
+        if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
           handled = true;
