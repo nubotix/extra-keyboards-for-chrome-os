@@ -15,7 +15,7 @@ limitations under the License.
 */
 var previousCharIsMagic = false;
 var contextID = -1;
-var circumflexed = {
+var lut = {
   "a": "\u00e2", 
   "A": "\u00c2", 
   "e": "\u00ea", 
@@ -48,9 +48,9 @@ chrome.input.ime.onKeyEvent.addListener(
       
       if (previousCharIsMagic && keyData.type == "keydown" && !isPureModifier(keyData)) {
         previousCharIsMagic = false;
-        if (circumflexec[keyData.key]) {
+        if (lut[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
-                                   "text": circumflexed[keyData.key]});
+                                   "text": lut[keyData.key]});
           handled = true;
         } 
        // else {
