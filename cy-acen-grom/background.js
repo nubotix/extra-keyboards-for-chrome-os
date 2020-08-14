@@ -15,7 +15,7 @@ limitations under the License.
 */
 var previousCharIsMagic = false;
 var contextID = -1;
-var circumflexed = {
+const circumflexed = {
   "a": "\u00e2", 
   "A": "\u00c2", 
   "e": "\u00ea", 
