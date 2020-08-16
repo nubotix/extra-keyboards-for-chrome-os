@@ -7,7 +7,7 @@ chrome.input.ime.onFocus.addListener(function(context) {
 
 chrome.input.ime.onKeyEvent.addListener(
   function(engineID, keyData) {
-    if (keyData.type == "keydown" && keyData.key.match(/^[aeiouwy]$/)) {
+    if (/*KeyboardEvent.altgrKey && */ keyData.type == "keydown" && keyData.key.match(/^[aeiouwy]$/)) {
       chrome.input.ime.commitText({"contextID": context_id,
                                    "text": keyData.key.toUpperCase()});
       return true;

@@ -30,8 +30,8 @@ limitations under the License.
       "type": "ime",
       "id": "uk3us",
       "description": "newid q efo AltGr",  // user visible description
-      "language": "en-US",  // The primary language this IME is used for
-      "layouts": ["us"]
+      "language": "en-GB",  // The primary language this IME is used for
+      "layouts": ["gb(extd)"]
     }
   ]
 }
