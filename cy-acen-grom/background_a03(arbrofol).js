@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 var previousCharIsMagic = false;
+//var isAltGraph = false;
 var contextID = -1;
 const circumflexed = {
   "a": "\u00e2", 
@@ -43,33 +44,26 @@ function isPureModifier(keyData) {
 }
 
 function isAltGraph(keyData) {
-  return (keyData.key == "AltRight" && keyData.type =="keypress");
+  return (keyData.code == "AltRight" )/*&& keyData.type =="keypress")*/;
 }
 
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
-      var handled = false;
-      if ()
-      
-      if (/*previousCharIsMagic && */keyData.type == "keydown" && !isPureModifier(keyData)) /*{
-        previousCharIsMagic = false;*/
-    // if (previousCharIsMagic && keyData.type == "keydown" && !isPureModifier(keyData)) {
-    // previousCharIsMagic = false;
+      //var handled = false;
+          
+     if ( isAltGraph(keyData) && keyData.type == "keydown" && !isPureModifier(keyData)) 
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
-          handled = true;
+          //handled = true;
         } 
-       // else {
-       //   chrome.input.ime.commitText({"contextID": contextID,
-       //                           "text": "`"});
-       //}
-      }
       
-      if (!handled && keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
+      
+     /* if (!handled && keyData.type == "keydown" && keyData.code == "AltRight") {
         previousCharIsMagic = true;
         handled = true;
-      }
-      
-      return handled;
-});
+      } */
+            
+      //return handled;
+    
+    });
