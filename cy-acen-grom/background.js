@@ -57,7 +57,7 @@ chrome.input.ime.onKeyEvent.addListener(
         isAltGr = true;
       }
       
-      */if (isAltGrActive && keyData.type == "keydown" /*&& !isPureModifier(keyData)*/
+      */if (isAltGrActive && keyData.type == "keydown" )/*&& !isPureModifier(keyData)*/
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
