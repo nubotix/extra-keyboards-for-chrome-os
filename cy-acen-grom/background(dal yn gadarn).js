@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 var previousCharIsMagic = false;
-
 var contextID = -1;
 const circumflexed = {
   "a": "\u00e2", 
@@ -46,25 +45,24 @@ function isPureModifier(keyData) {
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
-      var isAltGr = false;
-
-      if (keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
-        //previousCharIsMagic = true;
-        isAltGr = true;
-      }
       
-      if (isAltGr && keyData.type == "keydown" && !isPureModifier(keyData)) {
-        //previousCharIsMagic = false;
+      if (previousCharIsMagic && keyData.type == "keydown" && !isPureModifier(keyData)) {
+        previousCharIsMagic = false;
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
-          //handled = true;
+          handled = true;
         } 
-    
        // else {
        //   chrome.input.ime.commitText({"contextID": contextID,
        //                           "text": "`"});
        //}
       }
-       //return handled;
+      
+      if (!handled && keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
+        previousCharIsMagic = true;
+        handled = true;
+      }
+      
+      return handled;
 });
