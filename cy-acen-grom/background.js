@@ -43,11 +43,6 @@ function isPureModifier(keyData) {
   //return (keyData.key == "AltGraph")|| (keyData.key == "AltRight");
 }
 
-function isAltGrActive(event) {
-    var isAltGr = event.getModifierState("AltGraph");
-    return isAltGr
-  }
-
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
