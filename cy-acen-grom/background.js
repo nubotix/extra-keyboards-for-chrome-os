@@ -43,28 +43,31 @@ function isPureModifier(keyData) {
   //return (keyData.key == "AltGraph")|| (keyData.key == "AltRight");
 }
 
+function isAltGrActive(event) {
+    var isAltGr = event.getModifierState("AltGraph");
+    return isAltGr
+  }
+
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
-      var isAltGr = false;
 
-      if (keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
+      /*if (keyData.type == "keydown" && keyData.code == "AltRight" && keyData.key =="") {
         //previousCharIsMagic = true;
         isAltGr = true;
       }
       
-      if (isAltGr && keyData.type == "keydown" && !isPureModifier(keyData)) {
-        //previousCharIsMagic = false;
+      */if (isAltGrActive && keyData.type == "keydown" /*&& !isPureModifier(keyData)*/
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
-          //handled = true;
+          handled = true;
         } 
     
        // else {
        //   chrome.input.ime.commitText({"contextID": contextID,
        //                           "text": "`"});
        //}
-      }
-       //return handled;
+      
+       return handled;
 });
