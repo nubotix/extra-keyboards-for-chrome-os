@@ -13,9 +13,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-var previousCharIsMagic = false;
+var AltGr = { PLAIN: "plain", ALTERNATE: "alternate" };
+//var previousCharIsMagic = false;
 
 var contextID = -1;
+var altGrState = AltGr.PLAIN;
 const circumflexed = {
   "a": "\u00e2", 
   "A": "\u00c2", 
@@ -38,6 +40,11 @@ chrome.input.ime.onFocus.addListener(function(context) {
   contextID = context.contextID;
 });
 
+function updateAltGrState(keyData) {
+  altGrState = (keyData.code == "AltRight") ? ((keyData.type == "keydown") ? AltGr.ALTERNATE : AltGr.PLAIN)
+                                              : altGrState;
+}
+
 function isPureModifier(keyData) {
   return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
   //return (keyData.key == "AltGraph")|| (keyData.key == "AltRight");
@@ -50,9 +57,11 @@ chrome.input.ime.onKeyEvent.addListener(
       /*if (keyData.type == "keydown" && keyData.code == "AltRight" && keyData.key =="") {
         //previousCharIsMagic = true;
         isAltGr = true;
-      }
-      
-      */if (isAltGrActive && keyData.type == "keydown" )/*&& !isPureModifier(keyData)*/
+      }*/
+
+      updateAltGrState(keyData);
+
+      if (altGrState == AltGr.ALTERNATE && keyData.type == "keydown" )/*&& !isPureModifier(keyData)*/
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
