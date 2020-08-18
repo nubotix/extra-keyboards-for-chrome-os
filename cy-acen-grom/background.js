@@ -18,7 +18,7 @@ var AltGr = false
 //var previousCharIsMagic = false;
 
 var contextID = -1;
-var altGrState = AltGr;
+
 const circumflexed = {
   "a": "\u00e2", 
   "A": "\u00c2", 
@@ -42,8 +42,14 @@ chrome.input.ime.onFocus.addListener(function(context) {
 });
 
 function updateAltGrState(keyData) {
-  altGrState = (keyData.code == "AltRight") ? ((keyData.type == "keydown") ? AltGr = true: AltGr = false)
-                                              : altGrState;
+  if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
+    AltGr = true;
+    handled = true;
+  }
+/*if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
+  AltGr = true;
+  handled = true;
+} */
 }
 
 function isPureModifier(keyData) {
@@ -62,7 +68,7 @@ chrome.input.ime.onKeyEvent.addListener(
 
       updateAltGrState(keyData);
 
-      if (altGrState && keyData.type == "keydown" )/*&& !isPureModifier(keyData)*/
+      if (AltGr && keyData.type == "keydown" )/*&& !isPureModifier(keyData)*/
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
@@ -76,3 +82,4 @@ chrome.input.ime.onKeyEvent.addListener(
       
        return handled;
 });
+
