@@ -46,6 +46,10 @@ function updateAltGrState(keyData) {
     AltGr = true;
     handled = true;
   }
+  if (keyData.type == "keyup" && keyData.code == "AltRight" ) {
+    AltGr = false;
+    handled = true;
+  }
 /*if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
   AltGr = true;
   handled = true;
@@ -60,7 +64,7 @@ function isPureModifier(keyData) {
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
-      AltGr = false;
+      //AltGr = false;
 
       /*if (keyData.type == "keydown" && keyData.code == "AltRight" && keyData.key =="") {
         //previousCharIsMagic = true;
