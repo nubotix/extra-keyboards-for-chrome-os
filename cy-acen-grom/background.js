@@ -60,6 +60,7 @@ function isPureModifier(keyData) {
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
+      AltGr = false;
 
       /*if (keyData.type == "keydown" && keyData.code == "AltRight" && keyData.key =="") {
         //previousCharIsMagic = true;
