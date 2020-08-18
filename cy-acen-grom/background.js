@@ -45,11 +45,11 @@ function updateAltGrState(keyData) {
   if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
     AltGr = true;
     handled = true;
-  }
-  if (keyData.type == "keyup" && keyData.code == "AltRight" ) {
+  } 
+  /* else {
     AltGr = false;
     handled = true;
-  }
+  } */
 /*if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
   AltGr = true;
   handled = true;
@@ -78,8 +78,13 @@ chrome.input.ime.onKeyEvent.addListener(
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
           handled = true;
+          //AltGr = false;
         } 
-    
+
+      /*if (AltGr && keyData.type == "keyup" ){
+          AltGr = false; 
+        }
+      */
        // else {
        //   chrome.input.ime.commitText({"contextID": contextID,
        //                           "text": "`"});
