@@ -46,12 +46,13 @@ function updateAltGrState(keyData) {
   {
     switch (keyData.type)
     {
-      case "keydown":AltGr = true;
+      case "keydown": AltGr = true;
         break
       case "keyup":AltGr = false;
         break
     }
   }
+  return Altgr
 }
 
 function isPureModifier(keyData) {
