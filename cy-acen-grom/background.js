@@ -42,10 +42,29 @@ chrome.input.ime.onFocus.addListener(function(context) {
 });
 
 function updateAltGrState(keyData) {
-  if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
+  if (keyData.code == "AltRight")
+  {
+    switch (keyData.type)
+    {
+      case "keydown":AltGr = true;
+        break
+      case "keyup":AltGr = false;
+        break
+    }
+  }
+  
+ /* if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
     AltGr = true;
     handled = true;
   }
+  */
+
+ /* function updateAltGrState(keyData) {
+    if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
+      AltGr = true;
+      handled = true;
+    }*/
+
 /*if (keyData.type == "keydown" && keyData.code == "AltRight" ) {
   AltGr = true;
   handled = true;
