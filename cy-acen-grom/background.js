@@ -41,19 +41,20 @@ chrome.input.ime.onFocus.addListener(function(context) {
   contextID = context.contextID;
 });
 
-function updateAltGrState(keyData) {
+/*function updateAltGrState(keyData) {
   if (keyData.code == "AltRight")
   {
     switch (keyData.type)
     {
       case "keydown": AltGr = true;
         break
-      case "keyup":AltGr = false;
+      case "keyup": AltGr = false;
         break
     }
   }
-  return Altgr
+  return (AltGr)
 }
+*/
 
 function isPureModifier(keyData) {
   return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
@@ -65,7 +66,18 @@ chrome.input.ime.onKeyEvent.addListener(
       var handled = false;
       
 
-      updateAltGrState(keyData);
+      //updateAltGrState(keyData);
+
+      if (keyData.code == "AltRight" && keyData.type == "keydown")
+        {
+         AltGr = true;
+        }
+      else if (keyData.code == "AltRight" && keyData.type == "keyup")
+        {   
+         AltGr = false;
+        }
+      
+      
 
       if (AltGr && keyData.type == "keydown" )/*&& !isPureModifier(keyData)*/
         if (circumflexed[keyData.key]) {
