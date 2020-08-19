@@ -52,8 +52,6 @@ function updateAltGrState(keyData) {
         break
     }
   }
-  
- 
 }
 
 function isPureModifier(keyData) {
@@ -77,19 +75,6 @@ chrome.input.ime.onKeyEvent.addListener(
         } 
         return handled;    
 });
-chrome.input.ime.onKeyEvent.addListener(
-  function(engineID, keyData) {
-    var handled = false;
 
-    updateAltGrState(keyData);
-
-    if (AltGr && keyData.type == "up" )/*&& !isPureModifier(keyData)*/
-      
-        AltGr = false;
-        return handled;
-}
-
-
-);
 
 
