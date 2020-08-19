@@ -80,17 +80,16 @@ chrome.input.ime.onKeyEvent.addListener(
           handled = true;
           //AltGr = false;
         } 
-        return handled;    
-});
-chrome.input.ime.onKeyEvent.addListener(
-  function(engineID, keyData) {
-    var handled = false;
+       //  
+
+    
 
     updateAltGrState(keyData);
 
-    if (AltGr && keyData.type == "up" )/*&& !isPureModifier(keyData)*/
+    if (AltGr && keyData.type == "keyup" ){/*&& !isPureModifier(keyData)*/
       
         AltGr = false;
+    }
         return handled;
 }
 
