@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 //var AltGr = { PLAIN: "plain", ALTERNATE: "alternate" };
-var AltGr = false
+var altGr = false
 //var previousCharIsMagic = false;
 
 var contextID = -1;
@@ -41,21 +41,6 @@ chrome.input.ime.onFocus.addListener(function(context) {
   contextID = context.contextID;
 });
 
-/*function updateAltGrState(keyData) {
-  if (keyData.code == "AltRight")
-  {
-    switch (keyData.type)
-    {
-      case "keydown": AltGr = true;
-        break
-      case "keyup": AltGr = false;
-        break
-    }
-  }
-  return (AltGr)
-}
-*/
-
 function isPureModifier(keyData) {
   return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
   //return (keyData.key == "AltGraph")|| (keyData.key == "AltRight");
@@ -65,27 +50,27 @@ chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
       
+    if (keyData.type == "keydown") {
 
-      //updateAltGrState(keyData);
-
-      if (keyData.code == "AltRight" && keyData.type == "keydown")
+      if (keyData.code == "AltRight")
         {
-         AltGr = true;
+         altGr = true;
+         handled = true;
+        } else if (altGr){
+          if (circumflexed[keyData.key]) {
+            chrome.input.ime.commitText({"contextID": contextID,
+                                     "text": circumflexed[keyData.key]});
+            handled = true;
         }
-      else if (keyData.code == "AltRight" && keyData.type == "keyup")
-        {   
-         AltGr = false;
-        }
-      
-      
+      }
 
-      if (AltGr && keyData.type == "keydown" )/*&& !isPureModifier(keyData)*/
-        if (circumflexed[keyData.key]) {
-          chrome.input.ime.commitText({"contextID": contextID,
-                                   "text": circumflexed[keyData.key]});
-          handled = true;
-          //AltGr = false;
+    } else if (keyData.type == "keyup") {
+      if (keyData.code == "AltRight") {
+          
+        altGr = false;
+        handled = true;
         } 
+    }  
         return handled;    
 });
 
