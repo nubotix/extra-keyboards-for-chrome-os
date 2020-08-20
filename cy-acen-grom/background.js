@@ -59,8 +59,8 @@ chrome.input.ime.onKeyEvent.addListener(
         }
       }
 
-    } else if (keyData.code == "Backquote") {
-      if (keyData.key == "ArrowUp") {
+    } else if (keyData.type == "keyup") {
+      if (keyData.code == "Backquote") {
           
         flexor = false;
         handled = true;
