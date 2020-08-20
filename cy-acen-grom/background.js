@@ -13,9 +13,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-//var AltGr = { PLAIN: "plain", ALTERNATE: "alternate" };
+
 var flexor = false
-//var previousCharIsMagic = false;
+
 
 var contextID = -1;
 
@@ -41,10 +41,10 @@ chrome.input.ime.onFocus.addListener(function(context) {
   contextID = context.contextID;
 });
 
-function isPureModifier(keyData) {
-  return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
+//function isPureModifier(keyData) {
+//  return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
   //return (keyData.key == "AltGraph")|| (keyData.key == "AltRight");
-}
+//}
 
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
@@ -64,8 +64,8 @@ chrome.input.ime.onKeyEvent.addListener(
         }
       }
 
-    } else if (keyData.type == "keyup") {
-      if (keyData.code == "Backquote") {
+    } else if (keyData.code == "Backquote") {
+      if (keyData.key == "ArrowUp") {
           
         flexor = false;
         handled = true;
