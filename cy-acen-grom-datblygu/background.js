@@ -47,7 +47,7 @@ chrome.input.ime.onKeyEvent.addListener(
       
     if (keyData.type == "keydown") {
 
-      if (keyData.code == "Backquote")
+      if (keyData.code == "AltRight")
         {
          flexor = true;
          handled = true;
@@ -60,7 +60,7 @@ chrome.input.ime.onKeyEvent.addListener(
       }
 
     } else if (keyData.type == "keyup") {
-      if (keyData.code == "Backquote") {
+      if (keyData.code == "AltRight") {
           
         flexor = false;
         handled = true;
