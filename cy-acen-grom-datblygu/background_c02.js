@@ -37,22 +37,26 @@ chrome.input.ime.onFocus.addListener(function(context) {
   contextID = context.contextID;
 });
 
-//function isPureModifier(keyData) {
-//  return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
-//}
+function isPureModifier(keyData) {
+  return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
+  //return (keyData.key == "AltGraph")|| (keyData.key == "AltRight");
+}
 
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
       
-      if (previousCharIsMagic && keyData.type == "keydown" /*&& !isPureModifier(keyData)*/) {
+      if (previousCharIsMagic && keyData.type == "keydown" && !isPureModifier(keyData)) {
         previousCharIsMagic = false;
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
                                    "text": circumflexed[keyData.key]});
           handled = true;
         } 
-       
+       // else {
+       //   chrome.input.ime.commitText({"contextID": contextID,
+       //                           "text": "`"});
+       //}
       }
       
       if (!handled && keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
