@@ -52,7 +52,6 @@ chrome.input.ime.onKeyEvent.addListener(
                                    "text": circumflexed[keyData.key]});
           handled = true;
         } 
-       
       }
       
       if (!handled && keyData.type == "keydown" && keyData.code == "AltRight" /*&& keyData.key ==""*/) {
