@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
   "name": "Acen Grom",
   "version": "1.1",
   "manifest_version": 2,
-  "description": "Acen Grom keyboard AltGr acting as a dead key for circumflex)",
+  "description": "Defnyddio AltGr neu alt gr fel allwedd segur ar gyfer llafariaid efo acen grom",
   "background": {
     "scripts": ["background.js"]
   },
@@ -21,7 +21,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
       "name": "Acen Grom",
       "type": "ime",
       "id": "cy_acen_grom_ime",
-      "description": "Acen Grom keyboard AltGr acting as a dead key for circumflex",  // user visible description
+      "description": "Defnyddio AltGr neu alt gr fel allwedd segur ar gyfer llafariaid efo acen grom",  // user visible description
       "language": "en-GB",  // The primary language this IME is used for
       "layouts": ["gb(extd)"]  // The primary keyboard layout for this IME (gb(extd) is a plain UK keyboard)
     }
