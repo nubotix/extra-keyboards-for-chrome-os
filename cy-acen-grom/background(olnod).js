@@ -15,10 +15,7 @@ limitations under the License.
 */
 
 var flexor = false
-
-
 var contextID = -1;
-
 const circumflexed = {
   "a": "\u00e2", 
   "A": "\u00c2", 
