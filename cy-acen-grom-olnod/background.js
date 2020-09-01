@@ -1,4 +1,5 @@
-/* Copyright 2020 Egin Cyfyngedig
+/* Acen Grom Olnod - Copyright 2020 Egin Cyfyngedig
+
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
@@ -25,6 +26,7 @@ const circumflexed = {
   "W": "\u0174", 
   "y": "\u0177", 
   "Y": "\u0176", 
+  " ": "\u2018"
   /*"`": "\u2018"*/
 };
 
