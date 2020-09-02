@@ -28,15 +28,11 @@ chrome.input.ime.onFocus.addListener(function(context) {
   contextID = context.contextID;
 });
 
-function isPureModifier(keyData) {
- return (keyData.key == "Shift") || (keyData.key == "Ctrl") || (keyData.key == "Alt");
-}
-
 chrome.input.ime.onKeyEvent.addListener(
     function(engineID, keyData) {
       var handled = false;
       
-      if (modifierActive && keyData.type == "keydown" && !isPureModifier(keyData)) {
+      if (modifierActive && keyData.type == "keydown") {
         modifierActive = false;
         if (circumflexed[keyData.key]) {
           chrome.input.ime.commitText({"contextID": contextID,
