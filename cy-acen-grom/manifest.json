@@ -7,7 +7,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 {
   "name": "Acen Grom",
-  "version": "1.1",
+  "version": "1.2",
   "manifest_version": 2,
   "icons": {  "16": "icon16.png",
     "48": "icon48.png",         
